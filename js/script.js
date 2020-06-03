@@ -25,27 +25,28 @@ function generaNumeriCasuali(quantitaNumeri, limiteMassimo){
 }
 
 // Numeri casuali generati dall'array
-var numeriCasuali = generaNumeriCasuali(16, 100);
-console.log(numeriCasuali);
+var arrayBombe = generaNumeriCasuali(16, 100);
+console.log(arrayBombe);
 
-// CHIEDO ALL'UTENTE I NUMERI DA INSERIRE
-var numeroUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
-console.log(numeroUtente);
 
 
 // VERIFICO SE IL NUMERO E' PRESENTE NELLA LISTA
 var verifica = false;
 var i = 0;
 
-while ( (i < 84) || (verifica == false) || (numeroUtente != numeriCasuali[i]) ){
+while ( (i < 84) || (verifica == false) ){
 
-  var numeroUtente = parseInt(prompt("Inserisci un altro numero compreso tra 1 e 100"));
-  console.log("Numero utente"numeroUtente);
-  console.log("Numero giro"i);
+  // CHIEDO ALL'UTENTE I NUMERI DA INSERIRE
+  var numeroUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
+  console.log(numeroUtente);
 
-  if (numeroUtente == numeriCasuali[i]) {
+  console.log("Numero utente"+ numeroUtente);
+  console.log("Numero giro" + i);
+
+  if (numeroUtente == arrayBombe[i]) {
     verifica = true;
   }
+
 
   i++;
 
