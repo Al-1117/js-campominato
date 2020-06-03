@@ -32,35 +32,25 @@ console.log(numeriCasuali);
 var numeroUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
 console.log(numeroUtente);
 
-// // VERIFICO SE IL NUMERO E' PRESENTE NELLA LISTA
-switch (numeroUtente) {
-  case numeriCasuali.length == numeroUtente:
-  console.log("errore");
-    break;
-  default:
+
+// VERIFICO SE IL NUMERO E' PRESENTE NELLA LISTA
+var verifica = false;
+var i = 0;
+
+while ( (i < 84) || (verifica == false) || (numeroUtente != numeriCasuali[i]) ){
+
+  var numeroUtente = parseInt(prompt("Inserisci un altro numero compreso tra 1 e 100"));
+  console.log("Numero utente"numeroUtente);
+  console.log("Numero giro"i);
+
+  if (numeroUtente == numeriCasuali[i]) {
+    verifica = true;
+  }
+
+  i++;
 
 }
 
-
-
-// // VERIFICO SE IL NUMERO E' PRESENTE NELLA LISTA
-// var verifica = false;
-// var i = 0;
-// while ( (i < 84) && (verifica == false) && (numeroUtente != numeriCasuali.length) ) {
-//   var nuovoNumero = parseInt(prompt("Inserisci un altro numero compreso tra 1 e 100"));
-//   console.log(nuovoNumero);
-//
-//   if (numeroUtente == numeriCasuali.length) {
-//     verifica = true;
-//   }
-//
-//   if (verifica) {
-//     console.log("Hai perso");
-//
-//   }
-//
-//   i++;
-//
-//
-//
-// }
+if (verifica == true) {
+  console.log("Hai perso");
+}
