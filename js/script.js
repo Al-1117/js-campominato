@@ -15,43 +15,53 @@
 
 // GENERARE I NUMERI CASUALI
 
-function generaNumeriCasuali(quantitaNumeri, limiteMassimo){
+function generaListaBombe(quantitaNumeri, limiteMassimo){
   var arrayNumeri = [];
-  for (var i = 0; i < quantitaNumeri; i++) {
-  var numeroRandom =  Math.floor(Math.random() * limiteMassimo) + 1;
-    arrayNumeri.push(numeroRandom);
+  while (arrayNumeri.length <= quantitaNumeri) {
+  var numeroRandom =  Math.floor(Math.random() * limiteMassimo);
+    if (!arrayNumeri.includes(numeroRandom)) {
+      arrayNumeri.push(numeroRandom);
+
+    }
+
   }
   return arrayNumeri;
 }
 
 // Numeri casuali generati dall'array
-var arrayBombe = generaNumeriCasuali(16, 100);
+var arrayBombe = generaListaBombe(16, 100);
 console.log(arrayBombe);
 
 
 
 // VERIFICO SE IL NUMERO E' PRESENTE NELLA LISTA
-var verifica = false;
-var i = 0;
 
-while ( (i < 84) || (verifica == false) ){
 
+
+var trovataBomba = false;
+var arrayTentativi = [];
+var numeroTentativi = 0
+console.log(numeroTentativi);
+
+while ( (arrayTentativi.length <= 84) && (trovataBomba == false ) ){
+  arrayTentativi.push(numeroTentativi + 1);
+  console.log(arrayTentativi);
   // CHIEDO ALL'UTENTE I NUMERI DA INSERIRE
   var numeroUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
   console.log(numeroUtente);
 
-  console.log("Numero utente"+ numeroUtente);
-  console.log("Numero giro" + i);
+  console.log("Numero utente è "+ numeroUtente);
 
-  if (numeroUtente == arrayBombe[i]) {
-    verifica = true;
+  // Controllo se il numero inserito è contenuto nell'arrayBombe
+  if (numeroUtente == arrayBombe.length){
+    trovataBomba = true;
   }
 
-
-  i++;
-
 }
-
-if (verifica == true) {
+  // Comunico il risultato
+if (trovataBomba == true) {
   console.log("Hai perso");
+
+} else if (arrayTentativi.length == 84 && trovataBomba == false) {
+  console.log("Hai vinto");
 }
