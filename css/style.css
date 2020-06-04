@@ -1,0 +1,80 @@
+/* RESET */
+body{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Regole generali */
+body{
+  font-family: 'Oxygen', sans-serif;
+  color: #ffffff;
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/* Container */
+.container{
+  width: 80%;
+  margin: auto;
+}
+/* Titolo */
+h1{
+  text-align: center;
+}
+
+/* Layover */
+.layover {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  height: 100%;
+}
+
+/* Select difficolta */
+select, button, .partita input{
+color: #ffffff;
+font-family: 'Oxygen', sans-serif;
+text-align: center;
+font-size: 17px;
+background-color: black;
+width: 100px;
+height: 30px;
+border: 1px solid #ffffff;
+border-radius: 8px;
+margin-right: 10px;
+}
+
+/* PARTITA */
+.partita{
+  text-align: center;
+}
+
+/* Input */
+.partita input{
+  margin: 10px 0;
+  padding: 5px;
+  width: 50px;
+  font-size: 1.2rem;
+}
+
+/* Button */
+ .partita button{
+  width: 80px;
+  margin-left: 15px;
+  height: 45px;
+}
+
+button:hover{
+  color: black;
+  background-color: #cccccc;
+
+}
+button:active{
+  font-weight: 900;
+  background-color: #ffffff;
+}
