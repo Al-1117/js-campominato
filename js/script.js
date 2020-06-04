@@ -32,7 +32,6 @@ function generaListaBombe(quantitaNumeri, limiteMassimo){
   }
   return arrayNumeri;
 }
-
 // Funzione per controllare se un elemento si trova in array o meno
 // Inserire l'elemento e la lista array
 // torna un booleano, vero o falso
@@ -47,9 +46,9 @@ function controllareElementoArray(elemento, array){
 }
 
 // OPZIONI DI GIOCO
+// Scelta difficolta
 
 var difficolta = parseInt(prompt("Scegli il livello da 0 a 2"));
-// Scelta difficolta
 
 switch (difficolta) {
   case 0:
@@ -77,7 +76,7 @@ var numeroBombe = 16;
 // Array Bombe
 var arrayBombe = generaListaBombe(numeroBombe, difficolta);
 console.log(arrayBombe);
-// Numero di tentativi massimi
+// Numero di tentativi massimi che cambia in base alla difficolta
 var numeroMassimoTentativi = difficolta - numeroBombe ;
 console.log("il numero di tentativi massimi è " + numeroMassimoTentativi);
 var punteggio = 0;
@@ -86,7 +85,11 @@ var bombaTrovata = false;
 // Chiedo all'utente di inserire numeri con ciclo while
 while ((punteggio < numeroMassimoTentativi) && (bombaTrovata == false) ) {
 
-  var numeroUtente = parseInt(prompt("Inserisci un numero"));
+  var numeroUtente = parseInt(prompt("Inserisci un numero da 1 a " + difficolta));
+  // Controllo che l'utente abbia inserito il numero valido
+  while ( (numeroUtente.length == 0) || (numeroUtente > difficolta) || (isNaN(numeroUtente)) ) {
+    var numeroUtente = parseInt(prompt(" Errore, numero non valido. Inserisci un numero da 1 a " + difficolta));
+  }
   console.log(numeroUtente);
 
   // il ciclo va avanti finche non trova il numero bomba
@@ -107,4 +110,4 @@ if (bombaTrovata) {
 else {
   console.log("Bravo hai vinto");
 }
-console.log("Questo è il punteggio " + parseInt(punteggio));
+console.log("Questo è il punteggio " + punteggio);
