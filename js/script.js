@@ -15,10 +15,15 @@
 
 // GENERARE I NUMERI CASUALI
 
+
+// Funzione per generare array bombe
+// Inserire quantità di bombe desiderata ed il limite massimo di numeri
 function generaListaBombe(quantitaNumeri, limiteMassimo){
   var arrayNumeri = [];
-  while (arrayNumeri.length <= quantitaNumeri) {
+  while (arrayNumeri.length <= (quantitaNumeri - 1)) {
   var numeroRandom =  Math.floor(Math.random() * limiteMassimo);
+    // Verifica se il numero è incluso o meno prima di aggiungerlo all'array in
+    // in modo da non aggiungere numeri doppi
     if (!arrayNumeri.includes(numeroRandom)) {
       arrayNumeri.push(numeroRandom);
 
@@ -28,40 +33,78 @@ function generaListaBombe(quantitaNumeri, limiteMassimo){
   return arrayNumeri;
 }
 
-// Numeri casuali generati dall'array
-var arrayBombe = generaListaBombe(16, 100);
+// Funzione per controllare se un elemento si trova in array o meno
+// Inserire l'elemento e la lista array
+// torna un booleano, vero o falso
+function controllareElementoArray(elemento, array){
+  var inArray = false;
+  for (var i = 0; i < array.length; i++) {
+    if (elemento == array[i]) {
+      inArray = true;
+    }
+  }
+  return inArray;
+}
+
+// OPZIONI DI GIOCO
+
+var difficolta = parseInt(prompt("Scegli il livello da 0 a 2"));
+// Scelta difficolta
+
+switch (difficolta) {
+  case 0:
+    difficolta = 100;
+
+    break;
+    case 1:
+    difficolta = 80;
+
+    break;
+
+    case 2:
+    difficolta = 50;
+    break;
+
+  default:
+  difficolta = 100;
+
+}
+console.log(difficolta);
+
+// Numero Bombe
+var numeroBombe = 16;
+
+// Array Bombe
+var arrayBombe = generaListaBombe(numeroBombe, difficolta);
 console.log(arrayBombe);
+// Numero di tentativi massimi
+var numeroMassimoTentativi = difficolta - numeroBombe ;
+console.log("il numero di tentativi massimi è " + numeroMassimoTentativi);
+var punteggio = 0;
+var bombaTrovata = false;
 
+// Chiedo all'utente di inserire numeri con ciclo while
+while ((punteggio < numeroMassimoTentativi) && (bombaTrovata == false) ) {
 
-
-// VERIFICO SE IL NUMERO E' PRESENTE NELLA LISTA
-
-
-
-var trovataBomba = false;
-var arrayTentativi = [];
-var numeroTentativi = 0
-console.log(numeroTentativi);
-
-while ( (arrayTentativi.length <= 84) && (trovataBomba == false ) ){
-  arrayTentativi.push(numeroTentativi + 1);
-  console.log(arrayTentativi);
-  // CHIEDO ALL'UTENTE I NUMERI DA INSERIRE
-  var numeroUtente = parseInt(prompt("Inserisci un numero compreso tra 1 e 100"));
+  var numeroUtente = parseInt(prompt("Inserisci un numero"));
   console.log(numeroUtente);
 
-  console.log("Numero utente è "+ numeroUtente);
+  // il ciclo va avanti finche non trova il numero bomba
 
-  // Controllo se il numero inserito è contenuto nell'arrayBombe
-  if (numeroUtente == arrayBombe.length){
-    trovataBomba = true;
+  if (controllareElementoArray(numeroUtente, arrayBombe) == true ) {
+    bombaTrovata = true;
+
   }
+  punteggio++
 
 }
-  // Comunico il risultato
-if (trovataBomba == true) {
-  console.log("Hai perso");
 
-} else if (arrayTentativi.length == 84 && trovataBomba == false) {
-  console.log("Hai vinto");
+// Comunico il risultato ed il relativo punteggio
+if (bombaTrovata) {
+  console.log("Hai preso la bomba! Hai perso");
+
 }
+else {
+  console.log("Bravo hai vinto");
+}
+console.log("Questo è il punteggio " + parseInt(punteggio));
