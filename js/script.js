@@ -13,6 +13,9 @@
 // Con difficoltà 0=> tra 1 e 100,
 // con difficoltà 1 => tra 1 e 80, con difficoltà 2=> tra 1 e 50
 
+// ELEMENTI HTML
+
+
 // GENERARE I NUMERI CASUALI
 
 
@@ -85,12 +88,28 @@ var bombaTrovata = false;
 // Chiedo all'utente di inserire numeri con ciclo while
 while ((punteggio < numeroMassimoTentativi) && (bombaTrovata == false) ) {
 
+
   var numeroUtente = parseInt(prompt("Inserisci un numero da 1 a " + difficolta));
+
+
+  // Creo l'array dei numeri che inserisce l'utente ai fini della validazione
+  // appendendo ogni numero che inserisce l'utente all'array
+  var arrayInputUtente = [''];
+  for (var i = 0; i < punteggio; i++) {
+    
+
+    arrayInputUtente.push(numeroUtente);
+    console.log("Questo è arrayInputUtente" + arrayInputUtente);
+    console.log("Questo è l'altro numero utente" + numeroUtente);
+  }
+
+
   // Controllo che l'utente abbia inserito il numero valido
-  while ( (numeroUtente.length == 0) || (numeroUtente > difficolta) || (isNaN(numeroUtente)) ) {
+  while ( (numeroUtente.length == 0) || (numeroUtente > difficolta) || (isNaN(numeroUtente)) || (numeroUtente == arrayInputUtente[i]) ) {
     var numeroUtente = parseInt(prompt(" Errore, numero non valido. Inserisci un numero da 1 a " + difficolta));
   }
-  console.log(numeroUtente);
+  // console.log(numeroUtente);
+
 
   // il ciclo va avanti finche non trova il numero bomba
 
